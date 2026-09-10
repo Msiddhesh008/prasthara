@@ -1,0 +1,34 @@
+# Dependencies
+node_modules/
+frontend/node_modules/
+
+# Build
+frontend/dist/
+dist/
+dist-ssr/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# Env / secrets
+.env
+.env.*
+!.env.example
+
+# Editor / OS
+.DS_Store
+.idea/
+.vscode/*
+!.vscode/extensions.json
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Local tooling
+*.local
+.cache/
