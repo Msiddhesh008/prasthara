@@ -1,7 +1,9 @@
 import type { Product } from '../types/product'
 
 const img = (id: string) =>
-  `https://images.unsplash.com/${id}?auto=format&fit=crop&w=900&q=80`
+  `https://images.unsplash.com/${id}?auto=format&fit=crop&w=1400&q=85`
+
+const gallery = (...ids: string[]) => ids.map(img)
 
 export const mockProducts: Product[] = [
   {
@@ -15,7 +17,12 @@ export const mockProducts: Product[] = [
     condition: 'excellent',
     story:
       'A pre-loved indigo shirt with hand-stitched kantha details. Still plenty of life — ready for a second home.',
-    images: [img('photo-1521572163474-6864f9cf17ab')],
+    images: gallery(
+      'photo-1521572163474-6864f9cf17ab',
+      'photo-1596755094514-f87e34085b81',
+      'photo-1489987707025-afc232f7ea0f',
+      'photo-1618354691373-d851c5c3a990',
+    ),
     tags: ['indigo', 'kantha', 'shirt'],
     isOneOfOne: true,
     featured: true,
@@ -31,7 +38,12 @@ export const mockProducts: Product[] = [
     condition: 'good',
     story:
       'Soft linen kurta in warm earth tones. Curated from garments that were discarded long before they were worn out.',
-    images: [img('photo-1594938298603-c8148c4dae35')],
+    images: gallery(
+      'photo-1594938298603-c8148c4dae35',
+      'photo-1620799140408-edc6dcb6d633',
+      'photo-1617137968427-85924c800a22',
+      'photo-1552374196-1ab2a1c593e8',
+    ),
     tags: ['linen', 'kurta'],
     isOneOfOne: true,
     featured: true,
@@ -47,7 +59,11 @@ export const mockProducts: Product[] = [
     condition: 'excellent',
     story:
       'A wrap skirt in classic block print. Through thrifting, this piece continues its journey instead of ending in waste.',
-    images: [img('photo-1583496661160-fb5886a0aaaa')],
+    images: gallery(
+      'photo-1583496661160-fb5886a0aaaa',
+      'photo-1585487000160-6ebcfceb0d03',
+      'photo-1594633312681-425c7b97ccd1',
+    ),
     tags: ['block-print', 'skirt'],
     isOneOfOne: true,
   },
@@ -62,7 +78,11 @@ export const mockProducts: Product[] = [
     condition: 'good',
     story:
       'Light cotton overlay with gentle wear that tells its first chapter. Perfect for layering into a new wardrobe story.',
-    images: [img('photo-1434389677669-e08b4cac3105')],
+    images: gallery(
+      'photo-1434389677669-e08b4cac3105',
+      'photo-1525507119028-ed4c629a60a3',
+      'photo-1562157873-818bc0726f68',
+    ),
     tags: ['cotton', 'layer'],
     isOneOfOne: true,
   },
@@ -77,7 +97,12 @@ export const mockProducts: Product[] = [
     condition: 'good',
     story:
       'Classic denim with character. We help clothes find new homes so textiles keep circulating.',
-    images: [img('photo-1576995853123-5a10305d93c0')],
+    images: gallery(
+      'photo-1576995853123-5a10305d93c0',
+      'photo-1544022613-e87ca75a784a',
+      'photo-1551028719-00167b16eac5',
+      'photo-1495105787522-5334e3ffa0ef',
+    ),
     tags: ['denim', 'jacket'],
     isOneOfOne: true,
     featured: true,
@@ -92,7 +117,11 @@ export const mockProducts: Product[] = [
     condition: 'excellent',
     story:
       'A handloom stole waiting for cooler evenings and quieter walks. Pre-loved, carefully selected.',
-    images: [img('photo-1601925260368-ae2f83cf8b7f')],
+    images: gallery(
+      'photo-1601925260368-ae2f83cf8b7f',
+      'photo-1601924993421-2f8e0a0f5c0f',
+      'photo-1520903920243-00d872a2d1c9',
+    ),
     tags: ['stole', 'handloom'],
     isOneOfOne: true,
   },
@@ -105,7 +134,11 @@ export const mockProducts: Product[] = [
     price: 980,
     story:
       'Handmade from discarded fabrics and tailor offcuts. Each patch carries a different textile story.',
-    images: [img('photo-1556910103-1c02745aae4d')],
+    images: gallery(
+      'photo-1556910103-1c02745aae4d',
+      'photo-1556911220-bff31c812dba',
+      'photo-1581578731548-c64695cc6952',
+    ),
     tags: ['apron', 'patchwork'],
     isOneOfOne: true,
     featured: true,
@@ -119,7 +152,11 @@ export const mockProducts: Product[] = [
     price: 920,
     story:
       'Not every textile can be worn again. Damaged and leftover cloth becomes a useful apron for everyday cooking.',
-    images: [img('photo-1600566753086-00f18fb6b3ea')],
+    images: gallery(
+      'photo-1600566753086-00f18fb6b3ea',
+      'photo-1556912173-46c336c7fd55',
+      'photo-1506368249639-73a05d4f8828',
+    ),
     tags: ['apron', 'indigo'],
     isOneOfOne: true,
   },
@@ -132,7 +169,12 @@ export const mockProducts: Product[] = [
     price: 1100,
     story:
       'Woven from reclaimed fabric panels. Built to carry more than groceries — a small act of circular living.',
-    images: [img('photo-1590874103328-eac38a683ce7')],
+    images: gallery(
+      'photo-1590874103328-eac38a683ce7',
+      'photo-1594633313593-bab3825d0caf',
+      'photo-1544816155-12df9643f363',
+      'photo-1584917865442-de89df76afd3',
+    ),
     tags: ['tote', 'bag'],
     isOneOfOne: true,
     featured: true,
@@ -146,7 +188,11 @@ export const mockProducts: Product[] = [
     price: 1350,
     story:
       'Transformed from outdated textiles into a compact crossbody. One less fabric thrown away.',
-    images: [img('photo-1548036328-c9fa89d128fa')],
+    images: gallery(
+      'photo-1548036328-c9fa89d128fa',
+      'photo-1566150905458-1bf1fc113f0d',
+      'photo-1591561954557-26941169b49e',
+    ),
     tags: ['crossbody', 'upcycled'],
     isOneOfOne: true,
   },
@@ -159,7 +205,11 @@ export const mockProducts: Product[] = [
     price: 420,
     story:
       'Small pouch stitched from tailor-shop offcuts. Proof that scraps still hold value.',
-    images: [img('photo-1566150905458-1bf1fc113f0d')],
+    images: gallery(
+      'photo-1566150905458-1bf1fc113f0d',
+      'photo-1622560480605-d83c853bc5c3',
+      'photo-1553062407-98eeb64c6a62',
+    ),
     tags: ['pouch', 'offcut'],
     isOneOfOne: true,
   },
@@ -172,7 +222,11 @@ export const mockProducts: Product[] = [
     price: 380,
     story:
       'A pocket-sized companion made from leftover cloth. Spreading the idea that waste can become useful again.',
-    images: [img('photo-1622560480605-d83c853bc5c3')],
+    images: gallery(
+      'photo-1622560480605-d83c853bc5c3',
+      'photo-1566150905458-1bf1fc113f0d',
+      'photo-1591561954557-26941169b49e',
+    ),
     tags: ['pouch'],
     isOneOfOne: true,
   },
@@ -185,7 +239,11 @@ export const mockProducts: Product[] = [
     price: 850,
     story:
       'Home textile crafted from discarded yardage. Sustainability does not always require something new.',
-    images: [img('photo-1616486338812-3dadae4b4ace')],
+    images: gallery(
+      'photo-1616486338812-3dadae4b4ace',
+      'photo-1584100936595-c0654b55a2e2',
+      'photo-1618220179428-22790b461013',
+    ),
     tags: ['home', 'runner'],
     isOneOfOne: true,
     featured: true,
@@ -199,7 +257,11 @@ export const mockProducts: Product[] = [
     price: 720,
     story:
       'Each cover begins with a different textile story — damaged cloth given a place in the home again.',
-    images: [img('photo-1584100936595-c0654b55a2e2')],
+    images: gallery(
+      'photo-1584100936595-c0654b55a2e2',
+      'photo-1616486338812-3dadae4b4ace',
+      'photo-1493663284031-b7e3aefcae8e',
+    ),
     tags: ['cushion', 'home'],
     isOneOfOne: true,
   },
@@ -212,7 +274,11 @@ export const mockProducts: Product[] = [
     price: 2000,
     story:
       'Bring us fabrics you no longer wear. We transform them into custom handmade pieces unique to your textile story.',
-    images: [img('photo-1558171813-4c088753af8f')],
+    images: gallery(
+      'photo-1558171813-4c088753af8f',
+      'photo-1558769132-cb1aea458c5e',
+      'photo-1489987707025-afc232f7ea0f',
+    ),
     tags: ['custom', 'commission'],
     isOneOfOne: true,
   },
@@ -225,7 +291,11 @@ export const mockProducts: Product[] = [
     price: 450,
     story:
       'Reusable wrap pieces from remnant cloth. A small way to join the journey of giving textiles a second life.',
-    images: [img('photo-1513885535751-8b9238bd345a')],
+    images: gallery(
+      'photo-1513885535751-8b9238bd345a',
+      'photo-1549465220-1a8b9238cd48',
+      'photo-1513201099705-a9746e1e201f',
+    ),
     tags: ['gift', 'remnant'],
     isOneOfOne: true,
   },

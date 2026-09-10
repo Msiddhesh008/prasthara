@@ -30,7 +30,14 @@ export function useProducts(filters?: ProductFilter) {
     return () => {
       active = false
     }
-  }, [filters?.type, filters?.category])
+  }, [
+    filters?.type,
+    filters?.category,
+    filters?.condition,
+    filters?.priceMin,
+    filters?.priceMax,
+    filters?.sort,
+  ])
 
   return { products, loading, error }
 }

@@ -10,6 +10,8 @@ export type Category =
 
 export type Condition = 'excellent' | 'good' | 'fair'
 
+export type SortOption = 'featured' | 'price-asc' | 'price-desc' | 'name'
+
 export interface Product {
   id: string
   name: string
@@ -29,6 +31,19 @@ export interface Product {
 export interface ProductFilter {
   type?: ProductType | 'all'
   category?: Category | 'all'
+  condition?: Condition | 'all'
+  priceMin?: number
+  priceMax?: number
+  sort?: SortOption
+}
+
+export interface ShopFilterState {
+  type: ProductType | 'all'
+  category: Category | 'all'
+  condition: Condition | 'all'
+  priceMin: number
+  priceMax: number
+  sort: SortOption
 }
 
 export interface CartItem {

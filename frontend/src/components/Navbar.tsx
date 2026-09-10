@@ -2,8 +2,9 @@ import { useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { NavLink, Link, useLocation } from 'react-router-dom'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
+import instagramQr from '../assets/instagram-qr.png'
 import logo from '../assets/logo-nav.png'
-import { ROUTES } from '../constants'
+import { CONTACT, ROUTES } from '../constants'
 import { useCart } from '../store/CartContext'
 
 const links = [
@@ -75,6 +76,37 @@ export function Navbar() {
               </motion.div>
             ))}
           </nav>
+
+          <motion.a
+            className="mobile-menu__qr"
+            href={CONTACT.instagram}
+            target="_blank"
+            rel="noreferrer"
+            aria-label={`Follow Prasthara on Instagram ${CONTACT.instagramHandle}`}
+            onClick={closeMenu}
+            initial={reduceMotion ? false : { opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{
+              duration: 0.4,
+              delay: reduceMotion ? 0 : 0.38,
+              ease: [0.22, 1, 0.36, 1],
+            }}
+          >
+            <img
+              src={instagramQr}
+              alt={`QR code for ${CONTACT.instagramHandle}`}
+              className="mobile-menu__qr-image"
+              width={120}
+              height={120}
+            />
+            <span className="mobile-menu__qr-meta">
+              <span className="mobile-menu__qr-label">Instagram</span>
+              <span className="mobile-menu__qr-handle">
+                {CONTACT.instagramHandle}
+              </span>
+              <span className="mobile-menu__qr-hint">Scan to follow</span>
+            </span>
+          </motion.a>
         </motion.div>
       )}
     </AnimatePresence>
