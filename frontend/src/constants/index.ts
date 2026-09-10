@@ -7,6 +7,14 @@ export const ROUTES = {
   contact: '/contact',
 } as const
 
+export const NAV_LINKS = [
+  { to: ROUTES.home, label: 'Home' },
+  { to: ROUTES.shop, label: 'Shop' },
+  { to: ROUTES.story, label: 'Our Story' },
+  { to: ROUTES.donate, label: 'Donate' },
+  { to: ROUTES.contact, label: 'Contact' },
+] as const
+
 export const CONTACT = {
   phone: '+91 9526597260',
   phoneHref: 'tel:+919526597260',

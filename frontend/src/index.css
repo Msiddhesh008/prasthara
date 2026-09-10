@@ -27,6 +27,8 @@
   --space-2xl: 6.5rem;
 
   --header-h: 4.5rem;
+  --app-header-h: 3.15rem;
+  --bottom-nav-h: 4.6rem;
   --radius: 0.35rem;
   --max-w: 72rem;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
@@ -43,6 +45,7 @@
 
 html {
   scroll-behavior: auto;
+  background-color: var(--color-cream);
 }
 
 body {
@@ -51,7 +54,8 @@ body {
   font-family: var(--font-body);
   font-weight: 400;
   color: var(--color-ink);
-  background:
+  background-color: var(--color-cream);
+  background-image:
     radial-gradient(ellipse 120% 80% at 10% -10%, rgba(201, 162, 39, 0.12), transparent 50%),
     radial-gradient(ellipse 90% 60% at 100% 0%, rgba(45, 79, 30, 0.08), transparent 45%),
     linear-gradient(180deg, var(--color-cream) 0%, var(--color-cream-soft) 40%, var(--color-cream) 100%);
@@ -130,8 +134,207 @@ ol {
   flex-direction: column;
 }
 
+.app-shell--mobile {
+  min-height: 100dvh;
+  padding-bottom: calc(var(--bottom-nav-h) + env(safe-area-inset-bottom, 0px));
+}
+
 .app-main {
   flex: 1;
+}
+
+.app-main--mobile {
+  padding-bottom: var(--space-md);
+  padding-top: 0;
+}
+
+.app-main--mobile .section {
+  padding-top: var(--space-md);
+  padding-bottom: var(--space-lg);
+}
+
+.app-main--mobile .product-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-sm);
+}
+
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: 60;
+  padding-top: env(safe-area-inset-top, 0px);
+  backdrop-filter: blur(14px);
+  background: var(--color-cream);
+  border-bottom: 1px solid var(--color-line);
+}
+
+.app-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  min-height: var(--app-header-h);
+  padding: 0.3rem var(--space-md);
+}
+
+.app-header__logo {
+  display: inline-flex;
+  align-items: center;
+}
+
+.app-header__logo-img {
+  height: 2.75rem;
+  width: auto;
+  object-fit: contain;
+}
+
+.bottom-nav {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 65;
+  padding-top: 0.2rem;
+  padding-left: 0;
+  padding-right: 0;
+  /* Slightly less than full inset so installed PWAs don’t feel oversized */
+  padding-bottom: max(0.15rem, calc(constant(safe-area-inset-bottom) - 0.7rem));
+  padding-bottom: max(0.15rem, calc(env(safe-area-inset-bottom, 0px) - 0.7rem));
+  pointer-events: none;
+  background: var(--color-cream);
+  backdrop-filter: blur(16px);
+  border-top: 1px solid var(--color-line);
+  box-shadow: 0 -8px 24px rgba(26, 26, 22, 0.06);
+}
+
+.bottom-nav__inner {
+  pointer-events: auto;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0;
+  padding: 0.25rem 0 0.1rem;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  backdrop-filter: none;
+  box-shadow: none;
+}
+
+@media (display-mode: standalone), (display-mode: fullscreen) {
+  .bottom-nav {
+    padding-bottom: max(0.1rem, calc(constant(safe-area-inset-bottom) - 0.85rem));
+    padding-bottom: max(0.1rem, calc(env(safe-area-inset-bottom, 0px) - 0.85rem));
+  }
+
+  .app-shell--mobile {
+    padding-bottom: var(--bottom-nav-h);
+  }
+}
+
+.bottom-nav__item {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  gap: 0.15rem;
+  margin: 0.1rem 0.12rem;
+  padding: 0.35rem 0.15rem;
+  border-radius: 0.55rem;
+  color: var(--color-muted);
+  font-size: 0.62rem;
+  letter-spacing: 0.02em;
+  transition: color 0.2s var(--ease), background 0.2s var(--ease);
+}
+
+.bottom-nav__icon {
+  display: grid;
+  place-items: center;
+  width: 1.35rem;
+  height: 1.35rem;
+  line-height: 1;
+}
+
+.bottom-nav__svg {
+  width: 1.2rem;
+  height: 1.2rem;
+}
+
+.bottom-nav__label {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.bottom-nav__item.is-active {
+  color: var(--color-forest-deep);
+  background: rgba(45, 79, 30, 0.1);
+}
+
+.bottom-nav__item.is-active .bottom-nav__svg {
+  stroke-width: 2;
+}
+
+.page-home-mobile {
+  display: grid;
+  gap: 0;
+}
+
+.mobile-banner {
+  position: relative;
+  min-height: 10rem;
+  display: grid;
+  place-items: end stretch;
+  overflow: hidden;
+  margin: 0;
+  color: var(--color-cream);
+}
+
+.mobile-banner__media,
+.mobile-banner__image {
+  position: absolute;
+  inset: 0;
+}
+
+.mobile-banner__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.mobile-banner__veil {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(26, 26, 22, 0.15), rgba(26, 26, 22, 0.62));
+}
+
+.mobile-banner__content {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 0.5rem;
+  justify-items: start;
+  padding: 1rem var(--space-md) 1.15rem;
+}
+
+.mobile-banner__logo {
+  height: 2.4rem;
+  width: auto;
+  filter: drop-shadow(0 6px 18px rgba(0, 0, 0, 0.35));
+}
+
+.mobile-banner__tag {
+  margin: 0;
+  max-width: 16rem;
+  font-family: var(--font-display);
+  font-size: 1.55rem;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.mobile-featured {
+  padding-top: var(--space-lg);
 }
 
 .site-header {
@@ -593,7 +796,7 @@ ol {
 .cart-overlay {
   position: fixed;
   inset: 0;
-  z-index: 50;
+  z-index: 80;
   background: var(--color-overlay);
   border: none;
   width: 100%;
@@ -604,14 +807,16 @@ ol {
   position: fixed;
   top: 0;
   right: 0;
-  z-index: 60;
+  z-index: 85;
   width: min(24rem, 100vw);
   height: 100vh;
+  height: 100dvh;
   background: var(--color-cream-soft);
   border-left: 1px solid var(--color-line);
   display: flex;
   flex-direction: column;
   padding: var(--space-md);
+  padding-top: calc(var(--space-md) + env(safe-area-inset-top, 0px));
 }
 
 .cart-drawer__header {
@@ -1591,13 +1796,13 @@ ol {
 
 .contact-layout {
   display: grid;
-  gap: var(--space-xl);
+  gap: var(--space-lg);
 }
 
 .contact-list {
   display: grid;
   gap: var(--space-md);
-  margin-top: var(--space-lg);
+  margin-top: 0;
 }
 
 .contact-list li span {
@@ -1613,6 +1818,29 @@ ol {
 .contact-list p {
   margin: 0;
   color: var(--color-ink);
+}
+
+.app-main--mobile .contact-layout {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.app-main--mobile .contact-intro {
+  order: 0;
+}
+
+.app-main--mobile .contact-form {
+  order: 1;
+}
+
+.app-main--mobile .contact-list {
+  order: 2;
+}
+
+.app-main--mobile .contact-qr {
+  order: 3;
+  margin-top: var(--space-sm);
 }
 
 .contact-form {
@@ -1715,7 +1943,28 @@ ol {
 
   .contact-layout {
     grid-template-columns: 1fr 1.1fr;
+    grid-template-areas:
+      'intro form'
+      'list form'
+      'qr form';
     align-items: start;
+    gap: var(--space-xl);
+  }
+
+  .contact-intro {
+    grid-area: intro;
+  }
+
+  .contact-list {
+    grid-area: list;
+  }
+
+  .contact-form {
+    grid-area: form;
+  }
+
+  .contact-qr {
+    grid-area: qr;
   }
 
   .shop-layout {

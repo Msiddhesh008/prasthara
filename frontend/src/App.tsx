@@ -3,7 +3,7 @@ import { Layout } from './components/Layout'
 import { ROUTES } from './constants'
 import { ContactPage } from './pages/ContactPage'
 import { DonatePage } from './pages/DonatePage'
-import { HomePage } from './pages/HomePage'
+import { HomeRoute } from './pages/HomeRoute'
 import { ProductDetailPage } from './pages/ProductDetailPage'
 import { ShopPage } from './pages/ShopPage'
 import { StoryPage } from './pages/StoryPage'
@@ -15,7 +15,7 @@ export default function App() {
       <CartProvider>
         <Routes>
           <Route element={<Layout />}>
-            <Route path={ROUTES.home} element={<HomePage />} />
+            <Route path={ROUTES.home} element={<HomeRoute />} />
             <Route path={ROUTES.shop} element={<ShopPage />} />
             <Route path="/shop/:slug" element={<ProductDetailPage />} />
             <Route path={ROUTES.story} element={<StoryPage />} />
